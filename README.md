@@ -24,7 +24,6 @@ A workshop hires out tools. Its API asks a supplier for availability. Your task 
 4. In the terminal at the repository root, run:
 
 ```bash
-source .venv/bin/activate
 python --version
 python -m pytest -q
 python -m uvicorn app.main:app --host 0.0.0.0 --port 8000
