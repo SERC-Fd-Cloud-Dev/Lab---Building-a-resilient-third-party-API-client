@@ -1,4 +1,4 @@
-# Building a resilient third-party API client
+# Lab - Building a resilient third-party API client
 
 A workshop hires out tools. Its API asks a supplier for availability. Your task is to keep this integration predictable when the supplier slows down, fails or sends unusable data. You will make changes to one working application and verify each change before continuing.
 
