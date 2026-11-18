@@ -1,98 +1,31 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/universal
 {
-    "name": "Cloud Development Labs",
-    // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-    "image": "ghcr.io/serc-computing/devcontainers/python-api:1",
-
-    // Features to add to the dev container. More info: https://containers.dev/features.
-    // "features": {},
-
-    // Use 'forwardPorts' to make a list of ports inside the container available locally.
-    "forwardPorts": [
-        8000
-    ],
-    "portsAttributes": {
-        "8000": {
-            "label": "FastAPI",
-            "onAutoForward": "notify",
-            "visibility": "private"
-        }
+  "name": "Cloud Development Resilience Lab",
+  "image": "ghcr.io/serc-computing/devcontainers/python-api:1",
+  "forwardPorts": [
+    8000,
+    8001
+  ],
+  "portsAttributes": {
+    "8000": {
+      "label": "Workshop API",
+      "visibility": "private"
     },
-
-    // Use 'postCreateCommand' to run commands after the container is created.
-    "postCreateCommand": ".devcontainer/scripts/check-features.sh", //&& code --install-extension https://github.com/SERC-Cloud-Dev-DF2A-2526/VS-Code-Extensions/releases/download/v0.0.2/services-manager-0.0.2.vsix",
-
-    // Configure tool-specific properties.
-    "customizations": {
-        "vscode": {
-            // Set *default* container specific settings.json values on container create.
-            "settings": {
-                "servicesManager.preselectedServices": [],
-                "sqltools.connections": [
-                    {
-                        "mysqlOptions": {
-                            "authProtocol": "default",
-                            "enableSsl": "Disabled"
-                        },
-                        "ssh": "Disabled",
-                        "previewLimit": 50,
-                        "server": "localhost",
-                        "port": 3306,
-                        "driver": "MariaDB",
-                        "name": "MariaDB",
-                        "username": "root",
-                        "password": "P@ssw0rd",
-                        "database": "mysql"
-                    },
-                    {
-                        "ssh": "Disabled",
-                        "previewLimit": 50,
-                        "server": "localhost",
-                        "port": 5432,
-                        "driver": "PostgreSQL",
-                        "name": "PostgreSQL",
-                        "username": "postgres",
-                        "database": "postgres",
-                        "password": "P@ssw0rd"
-                    },
-                    {
-                        "connectionTimeout": 15,
-                        "mssqlOptions": {
-                            "appName": "SQLTools",
-                            "useUTC": true,
-                            "encrypt": true,
-                            "trustServerCertificate": true
-                        },
-                        "ssh": "Disabled",
-                        "previewLimit": 50,
-                        "server": "localhost",
-                        "port": 1433,
-                        "driver": "MSSQL",
-                        "name": "SQLServer",
-                        "username": "sa",
-                        "password": "P@ssw0rd"
-                    }
-                ]
-            },
-
-            // Add the IDs of extensions you want installed when the container is created.
-            "extensions": [
-                // "ms-python.python",
-                // "ms-dotnettools.csdevkit",
-                // "redhat.vscode-yaml",
-                "github.vscode-github-actions",
-                // "ms-azuretools.vscode-containers",
-                "Postman.postman-for-vscode",
-                "mtxr.sqltools",
-                "mtxr.sqltools-driver-mysql",
-                "mtxr.sqltools-driver-pg",
-                "mtxr.sqltools-driver-sqlite",
-                "mtxr.sqltools-driver-mssql"
-            ]
-        }
+    "8001": {
+      "label": "Movie game",
+      "visibility": "private"
     }
-
-    // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-    // "remoteUser": "root"
+  },
+  "postCreateCommand": "bash .devcontainer/scripts/check-features.sh && bash tools/setup.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "Postman.postman-for-vscode",
+        "github.vscode-github-actions"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python"
+      }
+    }
+  }
 }

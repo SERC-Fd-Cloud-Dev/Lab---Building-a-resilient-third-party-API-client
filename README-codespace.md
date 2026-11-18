@@ -74,3 +74,4 @@ Port 8000 is configured as **private**. Do not make it public unless your lectur
 **Save your work:** commit and push the files you want to keep. You can stop and reopen a Codespace, but deleting it is not the same as closing the editor. Avoid rebuilding or deleting it as a first troubleshooting step.
 
 If a tool or service is unavailable, compare what you see with the current lab instructions and ask your lecturer for help.
+
